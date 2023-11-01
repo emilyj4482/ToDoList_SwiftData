@@ -15,16 +15,22 @@ struct MainView: View {
         NavigationStack {
             VStack {
                 List {
-                    HStack {
-                        Image(systemName: "star.fill")
-                        Text("Important")
-                        Spacer()
-                        Text("10")
-                            .font(.system(size: 10))
-                            .foregroundStyle(.gray)
+                    NavigationLink {
+                        TodoListView()
+                    } label: {
+                        HStack {
+                            Image(systemName: "star.fill")
+                            Text("Important")
+                            Spacer()
+                            Text("10")
+                                .font(.system(size: 10))
+                                .foregroundStyle(.gray)
+                        }
                     }
                 }
                 .listStyle(.plain)
+                .listRowSpacing(5)
+                .padding(.top, 5)
                 
                 Text("You have 0 custom list.")
                     .font(.system(size: 13))
@@ -50,7 +56,6 @@ struct MainView: View {
                     AddNewListView()
                 }
             }
-
         }
     }
 }

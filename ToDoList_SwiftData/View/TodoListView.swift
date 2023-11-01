@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TodoListView: View {
+    
+    @State var showModal: Bool = false
+    
     var body: some View {
         VStack {
             
@@ -16,33 +19,61 @@ struct TodoListView: View {
                     Image(systemName: "circle")
                         .foregroundStyle(.red)
                     
-                    Text("to study")
+                    Text("study SwiftData")
                     
                     Spacer()
                     
                     Image(systemName: "star")
                         .foregroundStyle(.yellow)
                 }
-                // .padding([.top, .bottom], 5)
+                .listRowSeparator(.hidden)
+                
+                HStack {
+                    Image(systemName: "circle")
+                        .foregroundStyle(.red)
+                    
+                    Text("buy some eggs")
+                    
+                    Spacer()
+                    
+                    Image(systemName: "star")
+                        .foregroundStyle(.yellow)
+                }
+                .listRowSeparator(.hidden)
+                
             }
             .listStyle(.plain)
+            .listRowSpacing(5)
+            .padding(.top, 5)
             
-            /*
             Button {
-                
+                showModal.toggle()
             } label: {
                 HStack {
                     Image(systemName: "plus")
                     Text("Add a Task")
                 }
             }
-            .frame(minWidth: .infinity, alignment: .leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 16)
             .padding(.bottom, 5)
-             */
-            
         }
         .navigationTitle("Important")
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    
+                } label: {
+                    Text("Rename")
+                }
+            }
+        }
+        .sheet(isPresented: $showModal) {
+            NavigationStack {
+                TaskEditView()
+            }
+            .presentationDetents([.height(50)])
+        }
     }
 }
 
