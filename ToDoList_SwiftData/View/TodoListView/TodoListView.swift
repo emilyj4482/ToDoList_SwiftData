@@ -13,34 +13,9 @@ struct TodoListView: View {
     
     var body: some View {
         VStack {
-            
             List {
-                HStack {
-                    Image(systemName: "circle")
-                        .foregroundStyle(.red)
-                    
-                    Text("study SwiftData")
-                    
-                    Spacer()
-                    
-                    Image(systemName: "star")
-                        .foregroundStyle(.yellow)
-                }
-                .listRowSeparator(.hidden)
-                
-                HStack {
-                    Image(systemName: "circle")
-                        .foregroundStyle(.red)
-                    
-                    Text("buy some eggs")
-                    
-                    Spacer()
-                    
-                    Image(systemName: "star")
-                        .foregroundStyle(.yellow)
-                }
-                .listRowSeparator(.hidden)
-                
+                TaskHStack()
+                    .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
             .listRowSpacing(5)
