@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
+    
+    @State private var showAddView: Bool = false
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -30,7 +33,7 @@ struct MainView: View {
                     .padding(.leading, 16)
                     .padding(.bottom, 5)
                 Button {
-                    
+                    showAddView.toggle()
                 } label: {
                     HStack {
                         Image(systemName: "plus")
@@ -42,6 +45,12 @@ struct MainView: View {
                 .padding(.bottom, 5)
             }
             .navigationTitle("ToDoList")
+            .sheet(isPresented: $showAddView) {
+                NavigationStack {
+                    AddNewListView()
+                }
+            }
+
         }
     }
 }

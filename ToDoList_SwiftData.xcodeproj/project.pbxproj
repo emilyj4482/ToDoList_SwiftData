@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10901B52AF299AA00C7DABC /* AddNewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10901B42AF299AA00C7DABC /* AddNewListView.swift */; };
 		A1AA71672AF289C900E86E90 /* ToDoList_SwiftDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA71662AF289C900E86E90 /* ToDoList_SwiftDataApp.swift */; };
 		A1AA71692AF289C900E86E90 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA71682AF289C900E86E90 /* MainView.swift */; };
 		A1AA716B2AF289C900E86E90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1AA716A2AF289C900E86E90 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A10901B42AF299AA00C7DABC /* AddNewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewListView.swift; sourceTree = "<group>"; };
 		A1AA71632AF289C900E86E90 /* ToDoList_SwiftData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList_SwiftData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1AA71662AF289C900E86E90 /* ToDoList_SwiftDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList_SwiftDataApp.swift; sourceTree = "<group>"; };
 		A1AA71682AF289C900E86E90 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -32,6 +34,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A10901B62AF29A0200C7DABC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A1AA71682AF289C900E86E90 /* MainView.swift */,
+				A10901B42AF299AA00C7DABC /* AddNewListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A1AA715A2AF289C900E86E90 = {
 			isa = PBXGroup;
 			children = (
@@ -52,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				A1AA71662AF289C900E86E90 /* ToDoList_SwiftDataApp.swift */,
-				A1AA71682AF289C900E86E90 /* MainView.swift */,
+				A10901B62AF29A0200C7DABC /* View */,
 				A1AA716A2AF289C900E86E90 /* Assets.xcassets */,
 				A1AA716C2AF289C900E86E90 /* Preview Content */,
 			);
@@ -137,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10901B52AF299AA00C7DABC /* AddNewListView.swift in Sources */,
 				A1AA71692AF289C900E86E90 /* MainView.swift in Sources */,
 				A1AA71672AF289C900E86E90 /* ToDoList_SwiftDataApp.swift in Sources */,
 			);
