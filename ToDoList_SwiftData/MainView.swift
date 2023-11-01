@@ -22,6 +22,19 @@ struct MainView: View {
                     }
                 }
                 .listStyle(.plain)
+                
+                Text("You have 0 custom list.")
+                    .font(.system(size: 13))
+                    .foregroundStyle(.pink)
+                
+                Button {
+                    
+                } label: {
+                    HStack {
+                        Image(systemName: "plus")
+                        Text("New List")
+                    }
+                }
             }
             .navigationTitle("ToDoList")
         }

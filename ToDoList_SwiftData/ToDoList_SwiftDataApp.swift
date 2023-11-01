@@ -12,6 +12,7 @@ struct ToDoList_SwiftDataApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .tint(.pink)
         }
     }
 }
