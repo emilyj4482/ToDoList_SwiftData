@@ -25,8 +25,10 @@ struct MainView: View {
                 
                 Text("You have 0 custom list.")
                     .font(.system(size: 13))
-                    .foregroundStyle(.pink)
-                
+                    .foregroundStyle(.tint)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 16)
+                    .padding(.bottom, 5)
                 Button {
                     
                 } label: {
@@ -35,6 +37,9 @@ struct MainView: View {
                         Text("New List")
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 16)
+                .padding(.bottom, 5)
             }
             .navigationTitle("ToDoList")
         }
