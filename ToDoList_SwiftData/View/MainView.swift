@@ -1,8 +1,8 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  ToDoList_SwiftData
 //
-//  Created by EMILY on 11/1/23.
+//  Created by EMILY on 01/11/2023.
 //
 
 import SwiftUI
