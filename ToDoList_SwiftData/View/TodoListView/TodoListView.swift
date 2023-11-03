@@ -6,41 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TodoListView: View {
     
     @State var showModal: Bool = false
     
+    @State var group: Group
+    
     var body: some View {
         VStack {
-            
             List {
-                HStack {
-                    Image(systemName: "circle")
-                        .foregroundStyle(.red)
-                    
-                    Text("study SwiftData")
-                    
-                    Spacer()
-                    
-                    Image(systemName: "star")
-                        .foregroundStyle(.yellow)
-                }
-                .listRowSeparator(.hidden)
-                
-                HStack {
-                    Image(systemName: "circle")
-                        .foregroundStyle(.red)
-                    
-                    Text("buy some eggs")
-                    
-                    Spacer()
-                    
-                    Image(systemName: "star")
-                        .foregroundStyle(.yellow)
-                }
-                .listRowSeparator(.hidden)
-                
+                TaskHStack()
+                    .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
             .listRowSpacing(5)
@@ -58,7 +36,7 @@ struct TodoListView: View {
             .padding(.leading, 16)
             .padding(.bottom, 5)
         }
-        .navigationTitle("Important")
+        .navigationTitle(group.name)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -77,6 +55,8 @@ struct TodoListView: View {
     }
 }
 
+/*
 #Preview {
-    TodoListView()
+    TodoListView(showModal: false, group: Group(id: 1, name: "Important", tasks: []))
 }
+*/

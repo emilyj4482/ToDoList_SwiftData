@@ -1,13 +1,17 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  ToDoList_SwiftData
 //
-//  Created by EMILY on 11/1/23.
+//  Created by EMILY on 01/11/2023.
 //
 
 import SwiftUI
+import SwiftData
 
 struct MainView: View {
+    
+    @Environment(\.modelContext) var context
+    @Query private var groups: [Group]
     
     @State private var showAddView: Bool = false
     
@@ -15,18 +19,23 @@ struct MainView: View {
         NavigationStack {
             VStack {
                 List {
-                    NavigationLink {
-                        TodoListView()
-                    } label: {
-                        HStack {
-                            Image(systemName: "star.fill")
-                            Text("Important")
-                            Spacer()
-                            Text("10")
-                                .font(.system(size: 10))
-                                .foregroundStyle(.gray)
+                    
+                    ForEach(groups) { group in
+                        NavigationLink {
+                            TodoListView(group: group)
+                        } label: {
+                            HStack {
+                                Image(systemName: "star.fill")
+                                Text(group.name)
+                                Spacer()
+                                Text("\(group.tasks.count)")
+                                    .font(.system(size: 10))
+                                    .foregroundStyle(.gray)
+                            }
                         }
                     }
+                    
+                    
                 }
                 .listStyle(.plain)
                 .listRowSpacing(5)
