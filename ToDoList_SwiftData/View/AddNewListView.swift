@@ -13,14 +13,13 @@ struct AddNewListView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
     
-    // @State private var 
+    @State private var group = Group()
     
-    @State var listName: String = ""
     @FocusState var focused: Bool
     
     var body: some View {
         VStack {
-            TextField("Untitled List", text: $listName)
+            TextField("Untitled List", text: $group.name)
                 .focused($focused)
                 .font(.system(.largeTitle, weight: .bold))
                 .padding(.leading, 16)
@@ -39,6 +38,7 @@ struct AddNewListView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button  {
+                    context.insert(group)
                     dismiss()
                 } label: {
                     Text("Done")

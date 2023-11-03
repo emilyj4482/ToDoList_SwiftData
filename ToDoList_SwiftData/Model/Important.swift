@@ -8,7 +8,13 @@
 import Foundation
 import SwiftData
 
+@Model
 final class Important {
     var name: String = "Important"
     var tasks: [Task]?
+    
+    init(name: String = "Important", tasks: [Task]? = nil) {
+        self.name = name
+        self.tasks = tasks
+    }
 }
