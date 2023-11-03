@@ -10,12 +10,11 @@ import SwiftData
 
 @Model
 final class Group {
-    let id: Int
     var name: String
-    var tasks: [Task]
     
-    init(id: Int, name: String, tasks: [Task]) {
-        self.id = id
+    @Relationship(deleteRule: .cascade, inverse: \Task.group) var tasks: [Task]?
+    
+    init(name: String, tasks: [Task]) {
         self.name = name
         self.tasks = tasks
     }

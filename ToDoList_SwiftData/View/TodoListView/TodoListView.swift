@@ -11,6 +11,8 @@ struct TodoListView: View {
     
     @State var showModal: Bool = false
     
+    @State var group: Group
+    
     var body: some View {
         VStack {
             List {
@@ -33,7 +35,7 @@ struct TodoListView: View {
             .padding(.leading, 16)
             .padding(.bottom, 5)
         }
-        .navigationTitle("Important")
+        .navigationTitle(group.name)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -52,6 +54,8 @@ struct TodoListView: View {
     }
 }
 
+/*
 #Preview {
-    TodoListView()
+    TodoListView(showModal: false, group: Group(id: 1, name: "Important", tasks: []))
 }
+*/

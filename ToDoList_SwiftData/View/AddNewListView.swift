@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddNewListView: View {
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var context
+    
+    // @State private var 
     
     @State var listName: String = ""
     @FocusState var focused: Bool

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A10901B52AF299AA00C7DABC /* AddNewListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10901B42AF299AA00C7DABC /* AddNewListView.swift */; };
 		A10901B82AF2A0A800C7DABC /* TodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10901B72AF2A0A800C7DABC /* TodoListView.swift */; };
+		A17868E12AF4F6C600E667F1 /* Important.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17868E02AF4F6C600E667F1 /* Important.swift */; };
 		A1AA71672AF289C900E86E90 /* ToDoList_SwiftDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA71662AF289C900E86E90 /* ToDoList_SwiftDataApp.swift */; };
 		A1AA71692AF289C900E86E90 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA71682AF289C900E86E90 /* MainView.swift */; };
 		A1AA716B2AF289C900E86E90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1AA716A2AF289C900E86E90 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		A10901B42AF299AA00C7DABC /* AddNewListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewListView.swift; sourceTree = "<group>"; };
 		A10901B72AF2A0A800C7DABC /* TodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListView.swift; sourceTree = "<group>"; };
+		A17868E02AF4F6C600E667F1 /* Important.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Important.swift; sourceTree = "<group>"; };
 		A1AA71632AF289C900E86E90 /* ToDoList_SwiftData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList_SwiftData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1AA71662AF289C900E86E90 /* ToDoList_SwiftDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList_SwiftDataApp.swift; sourceTree = "<group>"; };
 		A1AA71682AF289C900E86E90 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				A1AA71792AF2B3FA00E86E90 /* Group.swift */,
 				A1AA717B2AF2B40300E86E90 /* Task.swift */,
+				A17868E02AF4F6C600E667F1 /* Important.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1AA717C2AF2B40300E86E90 /* Task.swift in Sources */,
+				A17868E12AF4F6C600E667F1 /* Important.swift in Sources */,
 				A1AA717A2AF2B3FA00E86E90 /* Group.swift in Sources */,
 				A1AA71772AF2B2F100E86E90 /* TaskHStack.swift in Sources */,
 				A10901B52AF299AA00C7DABC /* AddNewListView.swift in Sources */,
