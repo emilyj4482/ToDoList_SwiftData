@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct TaskHStack: View {
+    
+    @State var task : Task
+    
     var body: some View {
         HStack {
-            Image(systemName: "circle")
-                .foregroundStyle(.red)
+            Image(systemName: task.isDone ? "checkmark.circle" : "circle")
+                .foregroundColor(task.isDone ? .green : .red)
             
-            Text("study SwiftData")
+            Text(task.title)
             
             Spacer()
             
-            Image(systemName: "star")
+            Image(systemName: task.isImportant ? "star.fill": "star")
                 .foregroundStyle(.yellow)
         }
     }
-}
-
-#Preview {
-    TaskHStack()
 }
