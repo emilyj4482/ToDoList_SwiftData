@@ -19,7 +19,6 @@ struct MainView: View {
         NavigationStack {
             VStack {
                 List {
-                    
                     ForEach(groups) { group in
                         NavigationLink {
                             TodoListView(group: group)
@@ -34,19 +33,21 @@ struct MainView: View {
                             }
                         }
                     }
-                    
-                    
                 }
                 .listStyle(.plain)
                 .listRowSpacing(5)
                 .padding(.top, 5)
                 
-                Text("You have 0 custom list.")
+                Text(
+                    groups.count < 3 ? "You have \(groups.count - 1) custom list."
+                    : "You have \(groups.count - 1) custom lists."
+                )
                     .font(.system(size: 13))
                     .foregroundStyle(.tint)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 16)
                     .padding(.bottom, 5)
+                
                 Button {
                     showAddView.toggle()
                 } label: {
