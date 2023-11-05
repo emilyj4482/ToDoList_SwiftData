@@ -32,6 +32,19 @@ struct MainView: View {
                                     .foregroundStyle(.gray)
                             }
                         }
+                        .listRowSeparator(.hidden)
+                        // swipe to delete
+                        .swipeActions(allowsFullSwipe: false) {
+                            // important group은 삭제 불가
+                            if group.name != "Important" {
+                                Button {
+                                    context.delete(group)
+                                } label: {
+                                    Image(systemName: "trash")
+                                }
+                                .tint(.red)
+                            }
+                        }
                     }
                 }
                 .listStyle(.plain)
