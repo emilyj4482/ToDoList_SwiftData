@@ -14,6 +14,10 @@ struct MainView: View {
     @Query private var groups: [Group]
     
     @State private var showAddView: Bool = false
+    @State private var showActionSheet: Bool = false
+    
+    // 잘못된 group 삭제 방지를 위해 실제 삭제 될 group을 담기 위한 빈 값
+    @State private var itemToDelete: Group? = nil
     
     var body: some View {
         NavigationStack {
@@ -24,7 +28,7 @@ struct MainView: View {
                             TodoListView(group: group)
                         } label: {
                             HStack {
-                                Image(systemName: "star.fill")
+                                Image(systemName: group.name == "Important" ? "star.fill" : "checklist.checked")
                                 Text(group.name)
                                 Spacer()
                                 Text("\(group.tasks.count)")
@@ -38,12 +42,21 @@ struct MainView: View {
                             // important group은 삭제 불가
                             if group.name != "Important" {
                                 Button {
-                                    context.delete(group)
+                                    itemToDelete = group
+                                    showActionSheet = true
                                 } label: {
                                     Image(systemName: "trash")
                                 }
                                 .tint(.red)
                             }
+                        }
+                        .confirmationDialog("Are you sure deleting the list?", isPresented: $showActionSheet, titleVisibility: .visible) {
+                            Button("Delete", role: .destructive) {
+                                if let item = itemToDelete {
+                                    context.delete(item)
+                                }
+                            }
+                            Button("Cancel", role: .cancel) {}
                         }
                     }
                 }
