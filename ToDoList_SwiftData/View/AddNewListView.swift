@@ -15,11 +15,12 @@ struct AddNewListView: View {
     
     @State private var group = Group()
     
+    @State var text: String = ""
     @FocusState var focused: Bool
     
     var body: some View {
         VStack {
-            TextField("Untitled List", text: $group.name)
+            TextField("Untitled List", text: $text)
                 .focused($focused)
                 .font(.system(.largeTitle, weight: .bold))
                 .padding(.leading, 16)
@@ -38,6 +39,9 @@ struct AddNewListView: View {
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button  {
+                    // TODO: textfield trim > group name
+                    
+                    
                     context.insert(group)
                     dismiss()
                 } label: {
@@ -48,6 +52,17 @@ struct AddNewListView: View {
         .onAppear {
             self.focused = true
         }
+    }
+}
+
+private extension AddNewListView {
+    func getGroupName() {
+        
+    }
+    
+    // group name 중복검사
+    func examGroupName() {
+        
     }
 }
 
