@@ -13,10 +13,9 @@ final class Task {
     var title: String
     var isDone: Bool
     var isImportant: Bool
+    @Relationship(deleteRule: .nullify) var group: Group?
     
-    @Relationship(deleteRule: .nullify) var group: Group
-    
-    init(title: String, isDone: Bool, isImportant: Bool, group: Group) {
+    init(title: String, isDone: Bool = false, isImportant: Bool = false, group: Group) {
         self.title = title
         self.isDone = isDone
         self.isImportant = isImportant

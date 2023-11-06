@@ -11,6 +11,7 @@ import SwiftData
 struct TaskEditView: View {
     
     @Environment(\.dismiss) var dismiss
+    @Bindable var group: Group
     
     @FocusState var focused: Bool
     @State var taskTitle: String = ""
@@ -29,6 +30,8 @@ struct TaskEditView: View {
             Spacer()
             
             Button {
+                let task = Task(title: taskTitle.trim(), group: group)
+                group.tasks.append(task)
                 dismiss()
             } label: {
                 Text("Done")
@@ -41,6 +44,8 @@ struct TaskEditView: View {
     }
 }
 
+/*
 #Preview {
     TaskEditView()
 }
+*/

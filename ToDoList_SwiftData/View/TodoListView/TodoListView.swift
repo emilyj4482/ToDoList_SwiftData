@@ -56,7 +56,7 @@ struct TodoListView: View {
         }
         .sheet(isPresented: $showModal) {
             NavigationStack {
-                TaskEditView()
+                TaskEditView(group: group)
             }
             .presentationDetents([.height(50)])
         }
