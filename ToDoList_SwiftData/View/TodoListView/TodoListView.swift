@@ -17,7 +17,7 @@ struct TodoListView: View {
     var body: some View {
         VStack {
             List {
-                ForEach(group.tasks) { task in
+                ForEach(group.tasks.sorted(by: { $0.timestamp < $1.timestamp })) { task in
                     TaskHStack(task: task)
                         .listRowSeparator(.hidden)
                         .swipeActions(allowsFullSwipe: false) {
