@@ -21,12 +21,21 @@ struct TodoListView: View {
                     TaskHStack(task: task)
                         .listRowSeparator(.hidden)
                         .swipeActions(allowsFullSwipe: false) {
+                            // delete button
                             Button {
                                 group.tasks.removeAll { $0.id == task.id }
                             } label: {
                                 Image(systemName: "trash")
                             }
                             .tint(.red)
+                            
+                            // edit button
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "pencil")
+                            }
+                            .tint(.cyan)
                         }
                 }
             }

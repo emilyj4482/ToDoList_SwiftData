@@ -9,12 +9,15 @@ import SwiftUI
 
 struct TaskHStack: View {
     
-    @State var task : Task
+    @Bindable var task : Task
     
     var body: some View {
         HStack {
             Image(systemName: task.isDone ? "checkmark.circle" : "circle")
                 .foregroundColor(task.isDone ? .green : .red)
+                .onTapGesture {
+                    task.isDone.toggle()
+                }
             
             Text(task.title)
             
@@ -22,6 +25,9 @@ struct TaskHStack: View {
             
             Image(systemName: task.isImportant ? "star.fill": "star")
                 .foregroundStyle(.yellow)
+                .onTapGesture {
+                    task.isImportant.toggle()
+                }
         }
     }
 }
