@@ -10,9 +10,14 @@ import SwiftData
 
 struct TodoListView: View {
     
-    @State var showModal: Bool = false
+    @State private var showAlert: Bool = false
+    @State private var newGroupName: String = ""
     
     @Bindable var group: Group
+    
+    @State private var showCreate: Bool = false
+    @State private var showEdit: Bool = false
+    @State private var taskToEdit: Task?
     
     var body: some View {
         VStack {
@@ -31,7 +36,8 @@ struct TodoListView: View {
                             
                             // edit button
                             Button {
-                                
+                                taskToEdit = task
+                                showEdit.toggle()
                             } label: {
                                 Image(systemName: "pencil")
                             }
@@ -46,7 +52,7 @@ struct TodoListView: View {
             // Important list에서는 task 추가 불가
             if group.name != "Important" {
                 Button {
-                    showModal.toggle()
+                    showCreate.toggle()
                 } label: {
                     HStack {
                         Image(systemName: "plus")
@@ -64,16 +70,31 @@ struct TodoListView: View {
             if group.name != "Important" {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        
+                        showAlert.toggle()
                     } label: {
                         Text("Rename")
+                    }
+                    .alert("Enter a new name for the list.", isPresented: $showAlert) {
+                        TextField(group.name, text: $newGroupName)
+                        Button("Confirm") {
+                            if !newGroupName.trim().isEmpty {
+                                group.name = newGroupName.trim()
+                            }
+                        }
+                        Button("Cancel", role: .cancel) {}
                     }
                 }
             }
         }
-        .sheet(isPresented: $showModal) {
+        .sheet(isPresented: $showCreate) {
             NavigationStack {
-                TaskEditView(group: group)
+                TaskEditView(group: group, taskToEdit: $taskToEdit, isCreating: true)
+            }
+            .presentationDetents([.height(50)])
+        }
+        .sheet(isPresented: $showEdit) {
+            NavigationStack {
+                TaskEditView(group: group, taskToEdit: $taskToEdit, isCreating: false)
             }
             .presentationDetents([.height(50)])
         }
