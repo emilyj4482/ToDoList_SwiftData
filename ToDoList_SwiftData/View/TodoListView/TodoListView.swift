@@ -12,7 +12,7 @@ struct TodoListView: View {
     
     @State var showModal: Bool = false
     
-    @State var group: Group
+    @Bindable var group: Group
     
     var body: some View {
         VStack {
@@ -20,6 +20,14 @@ struct TodoListView: View {
                 ForEach(group.tasks) { task in
                     TaskHStack(task: task)
                         .listRowSeparator(.hidden)
+                        .swipeActions(allowsFullSwipe: false) {
+                            Button {
+                                group.tasks.removeAll { $0.id == task.id }
+                            } label: {
+                                Image(systemName: "trash")
+                            }
+                            .tint(.red)
+                        }
                 }
             }
             .listStyle(.plain)
