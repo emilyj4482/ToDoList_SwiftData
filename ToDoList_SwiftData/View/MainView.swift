@@ -93,6 +93,12 @@ struct MainView: View {
                 }
             }
         }
+        .onAppear {
+            // Important group as default
+            if groups.isEmpty {
+                context.insert(Group(name: "Important", tasks: []))
+            }
+        }
     }
 }
 
