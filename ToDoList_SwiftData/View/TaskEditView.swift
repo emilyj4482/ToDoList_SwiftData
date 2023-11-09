@@ -12,13 +12,23 @@ struct TaskEditView: View {
     
     @Environment(\.dismiss) var dismiss
     
+    // task가 속한 group을 전달 받을 변수
+    @Bindable var group: Group
+    
+    // textfield
     @FocusState var focused: Bool
     @State var taskTitle: String = ""
     
+    // update 할 task를 전달 받을 변수
+    @Binding var taskToEdit: Task?
+    
+    // task create mode인지 edit mode인지 구분
+    var isCreating: Bool = true
+    
     var body: some View {
         HStack {
-            Image(systemName: "circle")
-                .foregroundStyle(.red)
+            Image(systemName: !isCreating && taskToEdit?.isDone == true ? "checkmark.circle" : "circle")
+                .foregroundStyle(!isCreating && taskToEdit?.isDone == true ? .green : .red)
             
             TextField("Enter a task.", text: $taskTitle)
                 .focused($focused)
@@ -29,7 +39,16 @@ struct TaskEditView: View {
             Spacer()
             
             Button {
-                dismiss()
+                if isCreating && !taskTitle.trim().isEmpty {
+                    // create
+                    let task = Task(title: taskTitle.trim(), group: group)
+                    group.tasks.append(task)
+                    dismiss()
+                } else if !isCreating && !taskTitle.trim().isEmpty {
+                    // edit
+                    taskToEdit?.title = taskTitle.trim()
+                    dismiss()
+                }
             } label: {
                 Text("Done")
             }
@@ -37,10 +56,16 @@ struct TaskEditView: View {
         .padding(16)
         .onAppear {
             focused = true
+            // edit mode일 경우 기존 task title이 textfield에 입력된 상태
+            if !isCreating {
+                taskTitle = taskToEdit?.title ?? ""
+            }
         }
     }
 }
 
+/*
 #Preview {
     TaskEditView()
 }
+*/

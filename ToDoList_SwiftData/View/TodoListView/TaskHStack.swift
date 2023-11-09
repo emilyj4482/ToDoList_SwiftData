@@ -8,21 +8,26 @@
 import SwiftUI
 
 struct TaskHStack: View {
+    
+    @Bindable var task : Task
+    
     var body: some View {
         HStack {
-            Image(systemName: "circle")
-                .foregroundStyle(.red)
+            Image(systemName: task.isDone ? "checkmark.circle" : "circle")
+                .foregroundColor(task.isDone ? .green : .red)
+                .onTapGesture {
+                    task.isDone.toggle()
+                }
             
-            Text("study SwiftData")
+            Text(task.title)
             
             Spacer()
             
-            Image(systemName: "star")
+            Image(systemName: task.isImportant ? "star.fill": "star")
                 .foregroundStyle(.yellow)
+                .onTapGesture {
+                    task.isImportant.toggle()
+                }
         }
     }
-}
-
-#Preview {
-    TaskHStack()
 }

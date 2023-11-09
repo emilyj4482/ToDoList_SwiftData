@@ -11,9 +11,9 @@ import SwiftData
 @Model
 final class Important {
     var name: String = "Important"
-    var tasks: [Task]?
+    var tasks: [Task]
     
-    init(name: String = "Important", tasks: [Task]? = nil) {
+    init(name: String = "Important", tasks: [Task] = []) {
         self.name = name
         self.tasks = tasks
     }

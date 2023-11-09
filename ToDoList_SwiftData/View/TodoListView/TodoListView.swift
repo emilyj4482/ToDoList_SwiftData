@@ -10,45 +10,91 @@ import SwiftData
 
 struct TodoListView: View {
     
-    @State var showModal: Bool = false
+    @State private var showAlert: Bool = false
+    @State private var newGroupName: String = ""
     
-    @State var group: Group
+    @Bindable var group: Group
+    
+    @State private var showCreate: Bool = false
+    @State private var showEdit: Bool = false
+    @State private var taskToEdit: Task?
     
     var body: some View {
         VStack {
             List {
-                TaskHStack()
-                    .listRowSeparator(.hidden)
+                ForEach(group.tasks.sorted(by: { $0.timestamp < $1.timestamp })) { task in
+                    TaskHStack(task: task)
+                        .listRowSeparator(.hidden)
+                        .swipeActions(allowsFullSwipe: false) {
+                            // delete button
+                            Button {
+                                group.tasks.removeAll { $0.id == task.id }
+                            } label: {
+                                Image(systemName: "trash")
+                            }
+                            .tint(.red)
+                            
+                            // edit button
+                            Button {
+                                taskToEdit = task
+                                showEdit.toggle()
+                            } label: {
+                                Image(systemName: "pencil")
+                            }
+                            .tint(.cyan)
+                        }
+                }
             }
             .listStyle(.plain)
             .listRowSpacing(5)
             .padding(.top, 5)
             
-            Button {
-                showModal.toggle()
-            } label: {
-                HStack {
-                    Image(systemName: "plus")
-                    Text("Add a Task")
+            // Important list에서는 task 추가 불가
+            if group.name != "Important" {
+                Button {
+                    showCreate.toggle()
+                } label: {
+                    HStack {
+                        Image(systemName: "plus")
+                        Text("Add a Task")
+                    }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 16)
+                .padding(.bottom, 5)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.leading, 16)
-            .padding(.bottom, 5)
         }
         .navigationTitle(group.name)
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    
-                } label: {
-                    Text("Rename")
+            // Important list는 rename 불가
+            if group.name != "Important" {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showAlert.toggle()
+                    } label: {
+                        Text("Rename")
+                    }
+                    .alert("Enter a new name for the list.", isPresented: $showAlert) {
+                        TextField(group.name, text: $newGroupName)
+                        Button("Confirm") {
+                            if !newGroupName.trim().isEmpty {
+                                group.name = newGroupName.trim()
+                            }
+                        }
+                        Button("Cancel", role: .cancel) {}
+                    }
                 }
             }
         }
-        .sheet(isPresented: $showModal) {
+        .sheet(isPresented: $showCreate) {
             NavigationStack {
-                TaskEditView()
+                TaskEditView(group: group, taskToEdit: $taskToEdit, isCreating: true)
+            }
+            .presentationDetents([.height(50)])
+        }
+        .sheet(isPresented: $showEdit) {
+            NavigationStack {
+                TaskEditView(group: group, taskToEdit: $taskToEdit, isCreating: false)
             }
             .presentationDetents([.height(50)])
         }
@@ -57,6 +103,6 @@ struct TodoListView: View {
 
 /*
 #Preview {
-    TodoListView(showModal: false, group: Group(id: 1, name: "Important", tasks: []))
+    TodoListView(group: Group(name: "Important", tasks: []))
 }
 */
