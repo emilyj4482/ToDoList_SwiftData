@@ -12,7 +12,7 @@ import SwiftData
 final class Group {
     var name: String
     
-    @Relationship(deleteRule: .cascade, inverse: \Task.group) var tasks: [Task]
+    @Relationship(deleteRule: .cascade, inverse: \Task.groups) var tasks: [Task]
     
     init(name: String = "", tasks: [Task] = []) {
         self.name = name

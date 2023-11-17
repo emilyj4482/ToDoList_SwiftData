@@ -13,6 +13,7 @@ struct TodoListView: View {
     @State private var showAlert: Bool = false
     @State private var newGroupName: String = ""
     
+    @Query private var groups: [Group]
     @Bindable var group: Group
     
     @State private var showCreate: Bool = false
@@ -28,7 +29,10 @@ struct TodoListView: View {
                         .swipeActions(allowsFullSwipe: false) {
                             // delete button
                             Button {
-                                group.tasks.removeAll { $0.id == task.id }
+                                // important task인 경우 important group 및 원래 소속 group 모두에서 task를 삭제
+                                groups.forEach { group in
+                                    group.tasks.removeAll { $0.id == task.id }
+                                }
                             } label: {
                                 Image(systemName: "trash")
                             }

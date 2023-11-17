@@ -41,8 +41,7 @@ struct TaskEditView: View {
             Button {
                 if isCreating && !taskTitle.trim().isEmpty {
                     // create
-                    let task = Task(title: taskTitle.trim(), group: group)
-                    group.tasks.append(task)
+                    let task = Task(title: taskTitle.trim(), groups: [group])
                     dismiss()
                 } else if !isCreating && !taskTitle.trim().isEmpty {
                     // edit
