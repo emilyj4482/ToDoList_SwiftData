@@ -30,7 +30,6 @@ struct TaskHStack: View {
                 .onTapGesture {
                     task.isImportant.toggle()
                     // important 여부에 따라 Important group에 추가 또는 삭제
-                    // TODO: Important에 추가 시 기존 group에서 task가 사라지는 것 해결
                     if task.isImportant {
                         groups[0].tasks.append(task)
                     } else {
