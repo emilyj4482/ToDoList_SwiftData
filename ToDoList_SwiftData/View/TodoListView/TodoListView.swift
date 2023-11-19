@@ -23,7 +23,7 @@ struct TodoListView: View {
     var body: some View {
         VStack {
             List {
-                Section("tasks") {
+                Section {
                     ForEach(group.tasks.filter { !$0.isDone }.sorted(by: { $0.timestamp < $1.timestamp }) ) { task in
                         TaskHStack(task: task)
                             .listRowSeparator(.hidden)
@@ -51,7 +51,7 @@ struct TodoListView: View {
                     }
                 }
                 
-                Section("Done") {
+                Section(group.tasks.filter { $0.isDone }.count == 0 ? "" : "tasks done!") {
                     ForEach(group.tasks.filter { $0.isDone }.sorted(by: { $0.timestamp < $1.timestamp }) ) { task in
                         TaskHStack(task: task)
                             .listRowSeparator(.hidden)
