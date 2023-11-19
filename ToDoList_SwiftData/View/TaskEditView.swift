@@ -10,6 +10,7 @@ import SwiftData
 
 struct TaskEditView: View {
     
+    @Environment(\.modelContext) var context
     @Environment(\.dismiss) var dismiss
     
     // task가 속한 group을 전달 받을 변수
@@ -42,6 +43,7 @@ struct TaskEditView: View {
                 if isCreating && !taskTitle.trim().isEmpty {
                     // create
                     let task = Task(title: taskTitle.trim(), groups: [group])
+                    context.insert(task)
                     dismiss()
                 } else if !isCreating && !taskTitle.trim().isEmpty {
                     // edit
@@ -62,9 +64,3 @@ struct TaskEditView: View {
         }
     }
 }
-
-/*
-#Preview {
-    TaskEditView()
-}
-*/
