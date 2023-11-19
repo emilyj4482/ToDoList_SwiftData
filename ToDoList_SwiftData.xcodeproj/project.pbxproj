@@ -19,6 +19,7 @@
 		A1AA71772AF2B2F100E86E90 /* TaskHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA71762AF2B2F100E86E90 /* TaskHStack.swift */; };
 		A1AA717A2AF2B3FA00E86E90 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA71792AF2B3FA00E86E90 /* Group.swift */; };
 		A1AA717C2AF2B40300E86E90 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA717B2AF2B40300E86E90 /* Task.swift */; };
+		A1CCC0F02B0A062800B73D50 /* SwipeActionModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CCC0EF2B0A062800B73D50 /* SwipeActionModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		A1AA71762AF2B2F100E86E90 /* TaskHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskHStack.swift; sourceTree = "<group>"; };
 		A1AA71792AF2B3FA00E86E90 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		A1AA717B2AF2B40300E86E90 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		A1CCC0EF2B0A062800B73D50 /* SwipeActionModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeActionModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				A10901B72AF2A0A800C7DABC /* TodoListView.swift */,
 				A1AA71762AF2B2F100E86E90 /* TaskHStack.swift */,
+				A1CCC0EF2B0A062800B73D50 /* SwipeActionModifier.swift */,
 			);
 			path = TodoListView;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				A1AA717C2AF2B40300E86E90 /* Task.swift in Sources */,
 				A17868E12AF4F6C600E667F1 /* Important.swift in Sources */,
 				A1AA717A2AF2B3FA00E86E90 /* Group.swift in Sources */,
+				A1CCC0F02B0A062800B73D50 /* SwipeActionModifier.swift in Sources */,
 				A1AA71772AF2B2F100E86E90 /* TaskHStack.swift in Sources */,
 				A10901B52AF299AA00C7DABC /* AddNewListView.swift in Sources */,
 				A17868E32AF5844100E667F1 /* Trim.swift in Sources */,

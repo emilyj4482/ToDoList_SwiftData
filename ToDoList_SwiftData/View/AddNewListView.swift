@@ -85,7 +85,3 @@ private extension AddNewListView {
         return groupName
     }
 }
-
-#Preview {
-    AddNewListView()
-}

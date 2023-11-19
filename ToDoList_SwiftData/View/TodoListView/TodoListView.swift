@@ -27,27 +27,7 @@ struct TodoListView: View {
                     ForEach(group.tasks.filter { !$0.isDone }.sorted(by: { $0.timestamp < $1.timestamp }) ) { task in
                         TaskHStack(task: task)
                             .listRowSeparator(.hidden)
-                            .swipeActions(allowsFullSwipe: false) {
-                                // delete button
-                                Button {
-                                    // important task인 경우 important group 및 원래 소속 group 모두에서 task를 삭제
-                                    groups.forEach { group in
-                                        group.tasks.removeAll { $0.id == task.id }
-                                    }
-                                } label: {
-                                    Image(systemName: "trash")
-                                }
-                                .tint(.red)
-                                
-                                // edit button
-                                Button {
-                                    taskToEdit = task
-                                    showEdit.toggle()
-                                } label: {
-                                    Image(systemName: "pencil")
-                                }
-                                .tint(.cyan)
-                            }
+                            .swipeActionModifier(group: group, task: task, taskToEdit: $taskToEdit, showEdit: $showEdit)
                     }
                 }
                 
@@ -55,62 +35,9 @@ struct TodoListView: View {
                     ForEach(group.tasks.filter { $0.isDone }.sorted(by: { $0.timestamp < $1.timestamp }) ) { task in
                         TaskHStack(task: task)
                             .listRowSeparator(.hidden)
-                            .swipeActions(allowsFullSwipe: false) {
-                                // delete button
-                                Button {
-                                    // important task인 경우 important group 및 원래 소속 group 모두에서 task를 삭제
-                                    groups.forEach { group in
-                                        group.tasks.removeAll { $0.id == task.id }
-                                    }
-                                } label: {
-                                    Image(systemName: "trash")
-                                }
-                                .tint(.red)
-                                
-                                // edit button
-                                Button {
-                                    taskToEdit = task
-                                    showEdit.toggle()
-                                } label: {
-                                    Image(systemName: "pencil")
-                                }
-                                .tint(.cyan)
-                            }
+                            .swipeActionModifier(group: group, task: task, taskToEdit: $taskToEdit, showEdit: $showEdit)
                     }
                 }
-                
-                
-                
-                /*
-                ForEach(group.tasks.sorted(by: { $0.timestamp < $1.timestamp })) { task in
-                    TaskHStack(task: task)
-                        .listRowSeparator(.hidden)
-                        .swipeActions(allowsFullSwipe: false) {
-                            // delete button
-                            Button {
-                                // important task인 경우 important group 및 원래 소속 group 모두에서 task를 삭제
-                                groups.forEach { group in
-                                    group.tasks.removeAll { $0.id == task.id }
-                                }
-                            } label: {
-                                Image(systemName: "trash")
-                            }
-                            .tint(.red)
-                            
-                            // edit button
-                            Button {
-                                taskToEdit = task
-                                showEdit.toggle()
-                            } label: {
-                                Image(systemName: "pencil")
-                            }
-                            .tint(.cyan)
-                        }
-                }
-                */
-                
-                
-                
             }
             .listStyle(.plain)
             .listRowSpacing(5)
@@ -167,9 +94,3 @@ struct TodoListView: View {
         }
     }
 }
-
-/*
-#Preview {
-    TodoListView(group: Group(name: "Important", tasks: []))
-}
-*/
